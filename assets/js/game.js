@@ -1,6 +1,7 @@
 var playerName = window.prompt("What is your robot's name");
-var playerHealth = 100;
+var playerHealth = 100; 
 var playerAttack = 10;
+var playerMoney = 10;
 
 var enemyName = "Roborto"
 var enemyHealth = 50;
@@ -41,9 +42,15 @@ var fight = function() {
     }
     // if player choses to skip
   } else if (promptFight === "skip" || promptFight === "SKIP") {
-    window.alert(playerName + " has chosen to skip the fight!");
-  } else {
-    window.alert("You need to choose a valid option. Try again!");
+    var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+
+    if (confirmSkip)
+      window.alert(playerName + " has decided to skip this fight. Goodbye!");
+      playerMoney = playerMoney - 2;
+  } 
+  
+  else {
+    fight();
   }
 }
 fight();
