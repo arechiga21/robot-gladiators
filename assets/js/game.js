@@ -58,7 +58,7 @@ var fightOrSkip = function() {
     var confirmSkip = window.confirm("Are you sure you'd like to quit?");
 
     if(confirmSkip) {
-      window.alert(playerInfo.name + "has decided to skip this fight. Goodbye!");
+      window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
 
       playerInfo.money = playerInfo.money - 10;
 
@@ -72,6 +72,10 @@ var fightOrSkip = function() {
 
 
 var fight = function(enemy) {
+  var isPlayerTurn = true;
+  if (Math.random() > 0.5) {
+    isPlayerTurn = false;
+  }
     while(playerInfo.health > 0 && enemy.health > 0) {
 
     if (fightOrSkip()) {
@@ -119,6 +123,8 @@ var fight = function(enemy) {
       } else {
         window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
       }
+
+      isPlayerTurn = !isPlayerTurn;
     }
   };
 
